@@ -2,13 +2,12 @@ let formatFullName = (firstName, lastName) => {
   if (
     typeof lastName !== "string" ||
     lastName.trim() === "" ||
-    firstName.trim() === "" ||
-    typeof firstName !== "string"
+    typeof firstName !== "string" ||
+    firstName.trim() === ""
   ) {
     return "Invalid name input";
-  } else {
-    return `${lastName}, ${firstName}`;
   }
+    return `${lastName}, ${firstName}`;
 };
 
 let calculateTotalCost = (price, quantity, taxRate) => {
@@ -37,7 +36,11 @@ let checEligibility = (age, isEmployed) => {
 };
 
 calculateTotalCost = (price, quantity, taxRate, discount) => {
-  if (typeof price !== "number" || typeof quantity !== "number" || taxRate !== "number") {
+  if (
+    typeof price !== "number" ||
+    typeof quantity !== "number" ||
+    taxRate !== "number"
+  ) {
     return "Invalid input";
   } else if (discount <= 0) {
     return (price * quantity - discount) * (1 + taxRate);
@@ -45,4 +48,3 @@ calculateTotalCost = (price, quantity, taxRate, discount) => {
     return price * quantity * (1 + taxRate);
   }
 };
-
