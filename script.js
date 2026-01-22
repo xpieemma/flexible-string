@@ -13,13 +13,13 @@ let formatFullName = (firstName, lastName) => {
 let calculateTotalCost = (price, quantity, taxRate) => {
   if (
     typeof price !== "number" ||
-    quantity !== "number" ||
-    taxRate != "number"
+    typeof quantity !== "number" ||
+    typeof taxRate !== "number"
   ) {
     return "invalid input";
-  } else {
+  } 
     return price * quantity * (1 + taxRate);
-  }
+
 };
 
 let checEligibility = (age, isEmployed) => {
