@@ -26,10 +26,10 @@ let checEligibility = (age, isEmployed) => {
   if (typeof age !== "number" || isEmployed !== "boolean") {
     return "invalid input";
   }
-  if (age <= 18 || isEmployed === false) {
+  if (age <= 18) {
     return "Not Eligible";
   }
-  if (age > 18 && isEmployed === false) {
+  if (!isEmployed) {
     return "Conditional eligible";
   }
   return "Eligible";
@@ -39,12 +39,13 @@ calculateTotalCost = (price, quantity, taxRate, discount) => {
   if (
     typeof price !== "number" ||
     typeof quantity !== "number" ||
-    taxRate !== "number"
+    typeof taxRate !== "number"
   ) {
     return "Invalid input";
-  } else if (discount <= 0) {
-    return (price * quantity - discount) * (1 + taxRate);
-  } else {
-    return price * quantity * (1 + taxRate);
   }
+  let subtotal = price * quantity;
+  if (discount > 0){
+    subtotal -= discount;
+  }
+  return subtotal * (1+taxRate);
 };
